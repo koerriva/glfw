@@ -1,6 +1,7 @@
 project "glfw"
     kind "StaticLib"
     language "C"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -44,7 +45,6 @@ project "glfw"
 
     filter "system:windows"
         systemversion "latest"
-        staticruntime "On"
 
         files
         {
@@ -70,5 +70,9 @@ project "glfw"
         symbols "on"
 
     filter "configurations:Release"
+        runtime "Release"
+        optimize "on"
+        
+    filter "configurations:Dist"
         runtime "Release"
         optimize "on"
